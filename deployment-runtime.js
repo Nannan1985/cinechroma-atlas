@@ -1,0 +1,5 @@
+/* Static deployment only. All object paths remain relative to an approved base. */
+(()=>{'use strict';const c=window.ATLAS_CONFIG;const base=new URL(c.assetBase,location.href);if(base.protocol!=='https:'&&!(base.protocol==='http:'&&['127.0.0.1','localhost'].includes(base.hostname)))throw Error('Unsafe asset origin');
+function asset(key){if(typeof key!=='string'||!key||key.startsWith('/')||key.includes('\\')||key.includes('%')||key.includes(':')||key.split('/').some(x=>x==='..'||x==='.')||!/^[-a-zA-Z0-9_./]+$/.test(key))throw Error('Invalid object key');const u=new URL(key,base);if(u.origin!==base.origin||!u.pathname.startsWith(base.pathname))throw Error('Object outside asset prefix');return u.href;}
+window.AtlasDeployment={asset,site:key=>new URL(c.siteBase+key,location.origin).href,async index(){const r=await fetch(asset('releases/'+c.release+'/index.json'),{credentials:'omit'});if(!r.ok)throw Error('Library unavailable');const d=await r.json();for(const f of d.films){if(f.poster)f.poster=asset(f.poster);f.viewer_url=this.site('film.html?id='+encodeURIComponent(f.export_id));}return d;}};
+})();

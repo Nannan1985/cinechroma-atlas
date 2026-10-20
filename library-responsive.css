@@ -1,0 +1,135 @@
+/* Narrow screens only: the desktop canvas and inspector rules are unchanged. */
+.mobile-sheet-toggle{display:none}
+@media (min-width:741px) and (max-width:1099px){
+ .workspace,.film-open .workspace{display:block;position:relative}
+ .workspace>.map-panel{width:100%}
+ .workspace>aside{display:none}
+ .film-open .workspace>aside{display:block;position:relative;margin-top:18px;padding:18px;border:1px solid #a9bdd518;border-radius:16px;background:#090e17e8}
+ #details #filmDetails{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 24px;align-items:start}
+ #details .poster-row{grid-column:1;grid-row:1 / 3;margin:0}
+ #details .film-timeline{grid-column:2;grid-row:1}
+ #details .related{grid-column:2;grid-row:2;min-height:0}
+ #details #seriesList{max-height:160px;overflow:auto}
+ #details .film-charts{grid-column:1 / -1;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin:0}
+ #details .chart-section-head,#details #chartStatus{grid-column:1 / -1}
+ #details .chart-panel+.chart-panel{margin:0;padding:0}
+ #details .source-note{grid-column:1 / -1}
+ #details #issues:empty{display:none}
+}
+@media (max-width:740px){
+ body{height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+ header{flex:none;padding:8px 12px;gap:8px;min-width:0}
+ header .brand{font-size:25px}
+ html[lang="en"] header .brand{font-size:clamp(17px,5vw,23px);white-space:normal;line-height:1.15;min-width:0;max-width:calc(100% - 152px)}
+ header nav{gap:6px;flex:none}
+ #language{font-size:12px;min-height:44px;max-width:70px;padding:6px}
+ #tourStart{min-height:44px;padding:6px;font-size:11px;white-space:nowrap}
+ main{width:100%;max-width:none;min-height:0;flex:1;margin:0;padding:0 12px max(6px,env(safe-area-inset-bottom));display:grid;grid-template-rows:auto auto minmax(0,1fr) auto}
+ body.immersive .heading h1{font-size:12px;margin:2px 0 4px;letter-spacing:0}
+ .stats{margin:2px 0 4px;gap:5px 14px;flex-wrap:nowrap;font-size:10px}
+ .stats strong{font-size:15px;margin-right:3px}
+ .controls{padding:4px 0;gap:8px;flex-wrap:nowrap}
+ .controls .search{min-width:0;flex:1;gap:0}
+ .search span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ .search input{min-width:0;width:100%;height:44px;padding:8px;font-size:16px}
+ .controls #filter{min-width:0;max-width:120px;font-size:11px;min-height:44px;padding:7px}
+ .workspace,.film-open .workspace{display:block;height:100%;min-height:0}
+ .workspace>.map-panel{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden}
+ .map-head{padding:2px 4px;font-size:9px;gap:8px}
+ #layoutStatus{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ #mapWrap{height:100%;min-height:0;overflow:hidden}
+ .atlas-controls{left:0;top:0;max-width:100%;gap:2px 4px}
+ .atlas-controls .layouts{flex-wrap:nowrap;gap:0}
+ .atlas-controls button,.atlas-controls button[data-mode],.atlas-controls #facet{min-height:44px;padding:6px 8px;font-size:11px}
+ .atlas-controls #facet{max-width:150px}
+ .atlas-controls #motion{padding:6px}
+ .film-open .atlas-controls{visibility:hidden;pointer-events:none}
+ #collapse{top:0;right:0;min-height:44px;padding:7px 12px}
+ .map-tools{right:0;bottom:6px}
+ .map-tools button{min-width:44px;min-height:44px;padding:6px 10px}
+ .film-open .map-tools{bottom:64px}
+ #legend{padding:0;flex-wrap:nowrap;overflow-x:auto;gap:2px;scrollbar-width:thin;max-height:46px}
+ #legend button{flex:none;min-height:44px;padding:5px 8px}
+ .film-open #legend{visibility:hidden}
+ .catalog{margin:0;padding:0;border:0}
+ .catalog summary{min-height:44px;display:flex;align-items:center;font-size:10px}
+ .catalog[open]{position:fixed;left:12px;right:12px;bottom:8px;z-index:30;max-height:65dvh;overflow:auto;padding:12px;background:#0d1421fa;border:1px solid #9fb7ce30;border-radius:14px}
+ #filmList{grid-template-columns:1fr;max-height:calc(65dvh - 80px)}
+ #filmList button{min-height:44px}
+ .film-open .catalog{visibility:hidden}
+ .workspace>aside,.film-open .workspace>aside{display:block;position:fixed;inset:auto 0 0;z-index:20;width:100%;padding:0 12px max(8px,env(safe-area-inset-bottom));border:1px solid #a9bdd52b;border-bottom:0;border-radius:18px 18px 0 0;background:linear-gradient(135deg,#111c2bf5,#080d16fa);backdrop-filter:blur(16px);transform:translateY(100%);opacity:0;visibility:hidden;transition:transform .45s,opacity .35s,visibility .35s;box-shadow:0 -12px 40px #0004}
+ .film-open .workspace>aside{transform:none;opacity:1;visibility:visible}
+ .mobile-sheet-toggle{width:100%;min-height:48px;display:flex;justify-content:space-between;align-items:center;gap:12px;border:0;padding:6px 4px;background:transparent;color:#becddd;font-size:12px}
+ .mobile-sheet-toggle::after{content:'⌃';font-size:20px;transition:transform .3s}
+ .sheet-open .mobile-sheet-toggle::after{transform:rotate(180deg)}
+ #details #filmDetails:not([hidden]){display:none}
+ .sheet-open #details #filmDetails:not([hidden]){display:block;max-height:min(58dvh,600px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:0 3px 10px;scroll-padding-top:8px}
+ #details .poster-row{grid-template-columns:85px minmax(0,1fr);gap:12px;margin:6px 0 12px;max-height:none}
+ #details #poster{max-height:140px}
+ #details #filmTitle,html[lang="en"] #details #filmTitle{font-size:21px}
+ #details #filmYear{margin-bottom:7px}
+ #details #info{font-size:11px;gap:4px 8px}
+ #details .related{min-height:0;margin:8px 0}
+ #details .relation-tabs{position:static;margin:4px 0}
+ #details .relation-tabs button{min-height:44px;margin:0;padding:7px 12px}
+ #details #seriesList{max-height:104px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
+ #details #seriesList button{min-height:44px;padding:8px;margin-bottom:3px}
+ #details .film-charts{margin-top:12px;padding-top:8px}
+ #details .film-charts canvas{height:62px;touch-action:pan-y}
+ #atlasColorStrip{height:44px}
+ #stageStatus{left:50%;bottom:70px;max-width:90%;text-align:center}
+ .tour-card{width:calc(100vw - 24px);padding:12px 16px;max-height:48dvh;transition:none}
+ .tour-card h2{font-size:19px;margin:6px 0}
+ #tourText{font-size:12px;line-height:1.65}
+ .tour-progress{margin:6px 0 10px}
+ .tour-actions{margin-top:10px}
+ .tour-actions button,#tourSkip{min-height:44px;min-width:44px}
+ .tour-keyboard{display:none}
+ #tourStatus{font-size:10px;margin-top:6px}
+ body.tour-mobile main{padding-bottom:var(--tour-card-space,280px)}
+ body.tour-mobile .catalog{display:none}
+ body.tour-mobile .workspace>aside{bottom:var(--tour-card-space,280px)}
+ body.tour-mobile.sheet-open #details #filmDetails:not([hidden]){max-height:calc(100dvh - var(--tour-card-space,280px) - 80px)}
+}
+@media (max-width:740px) and (max-height:550px){.heading{display:none}.tour-card{max-height:55dvh}.controls{padding:0}}
+@media (prefers-reduced-motion:reduce){.mobile-sheet-toggle::after{transition:none}}
+/* Keep the walkthrough's focus plane clear on phones. */
+@media(max-width:740px){
+ body.tour-mobile.film-open .map-tools{display:none}
+ body.tour-mobile.film-open #legend{visibility:hidden}
+ body.tour-mobile:not(.sheet-open) #details{visibility:hidden;pointer-events:none}
+ .tour-spot{transition:opacity .25s}
+ #details .source-note summary{min-height:44px;display:flex;align-items:center}
+}
+
+/* One compact exploration toolbar; the brand and tour carry the introduction. */
+.heading h1,.heading .eyebrow,.heading p{display:none!important}
+.heading:has(#stats[hidden]){display:none}
+.map-panel{position:relative}
+.map-head{position:absolute;z-index:7;right:12px;top:54px;border:0;padding:0;pointer-events:none;gap:12px}
+.atlas-controls{left:0;top:4px;max-width:100%;gap:8px}
+.atlas-controls .search{margin:0;gap:0}
+.atlas-controls .search span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.atlas-controls .search input{width:190px;padding:7px 11px;font-size:11px;background:#090b1099;border-color:#aebbcf24;border-radius:20px}
+@media(min-width:1100px) and (min-height:640px){
+ main{padding-top:8px;grid-template-rows:minmax(0,1fr) auto}
+ main:has(.heading:not(:has(#stats[hidden]))){grid-template-rows:auto minmax(0,1fr) auto}
+ .map-panel{grid-template-rows:minmax(0,1fr) auto}
+}
+@media(max-width:740px){
+ main{grid-template-rows:minmax(0,1fr) auto}
+ main:has(.heading:not(:has(#stats[hidden]))){grid-template-rows:auto minmax(0,1fr) auto}
+ .workspace>.map-panel{grid-template-rows:minmax(0,1fr) auto}
+ .atlas-controls{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px;width:100%;left:0;top:0}
+ .atlas-controls .search{grid-column:1 / -1;width:100%}
+ .atlas-controls .search input{width:100%;height:44px;font-size:16px;padding:8px 12px}
+ .atlas-controls .layouts{gap:0}
+ .atlas-controls button[data-mode]{padding:6px 5px;gap:3px;font-size:10px}
+ .atlas-controls #facet{min-width:0;width:100%;padding:6px 4px;font-size:10px}
+ .atlas-controls #motion{padding:6px 3px;font-size:10px}
+ .map-head{top:92px;right:4px;font-size:9px}
+}
+
+@media(min-width:1100px) and (min-height:640px){body.immersive .map-panel{grid-template-rows:minmax(0,1fr) auto}}
+
+@media(min-width:1100px) and (min-height:640px){body.immersive main{grid-template-rows:minmax(0,1fr) auto}body.immersive main:has(.heading:not(:has(#stats[hidden]))){grid-template-rows:auto minmax(0,1fr) auto}}
