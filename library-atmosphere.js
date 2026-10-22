@@ -22,15 +22,15 @@ function constellations(films,positions,seriesKey){
 // Store vector parameters only: no small raster texture, tiled grain or repeated dots.
 function makeBackground(doc,positions,hash){
  return {lights:[
-  {x:.16,y:.58,rx:.38,ry:.18,angle:-.16,rgb:'156,119,80',alpha:.09},
-  {x:.42,y:.45,rx:.46,ry:.22,angle:-.12,rgb:'76,115,139',alpha:.10},
-  {x:.72,y:.35,rx:.34,ry:.18,angle:.13,rgb:'118,94,137',alpha:.075},
-  {x:.66,y:.68,rx:.29,ry:.16,angle:-.25,rgb:'91,124,127',alpha:.055}
+  {x:.16,y:.58,rx:.38,ry:.18,angle:-.16,rgb:'156,131,97',alpha:.04},
+  {x:.42,y:.45,rx:.46,ry:.22,angle:-.12,rgb:'130,125,118',alpha:.035},
+  {x:.72,y:.35,rx:.34,ry:.18,angle:.13,rgb:'137,119,110',alpha:.025},
+  {x:.66,y:.68,rx:.29,ry:.16,angle:-.25,rgb:'124,121,114',alpha:.025}
  ]};
 }
 function drawBackground(c,bg,w,h,pan,zoom,focus,expansion){
  const t=smooth(expansion),shift=focus||{x:0,y:0};
- c.save();c.globalAlpha=1;const base=c.createLinearGradient(0,0,w,h);base.addColorStop(0,'#090d15');base.addColorStop(.5,'#0b1019');base.addColorStop(1,'#080b12');c.fillStyle=base;c.fillRect(0,0,w,h);
+ c.save();c.globalAlpha=1;const base=c.createLinearGradient(0,0,w,h);base.addColorStop(0,'#111112');base.addColorStop(.5,'#151413');base.addColorStop(1,'#101011');c.fillStyle=base;c.fillRect(0,0,w,h);
  const dx=(pan.x*(1-t)-shift.x*t)*.09,dy=(pan.y*(1-t)-shift.y*t)*.09,z=1+(zoom-1)*.06+t*.035;
  // Render gradients at the canvas resolution instead of magnifying an 8-bit fog map.
  c.globalAlpha=1-.72*t;
@@ -45,8 +45,8 @@ function drawBackground(c,bg,w,h,pan,zoom,focus,expansion){
  }
  const vignette=c.createRadialGradient(w*.48,h*.48,Math.min(w,h)*.25,w*.48,h*.48,Math.max(w,h)*.63);vignette.addColorStop(0,'rgba(0,0,0,0)');vignette.addColorStop(1,'rgba(0,0,0,.3)');c.globalAlpha=1;c.fillStyle=vignette;c.fillRect(0,0,w,h);
  // Blend the decorative sky into the page, without fading selectable stars.
- const rim=c.createLinearGradient(0,0,0,h);rim.addColorStop(0,'#090b10');rim.addColorStop(.17,'#090b1000');rim.addColorStop(.8,'#090b1000');rim.addColorStop(1,'#090b10');c.fillStyle=rim;c.fillRect(0,0,w,h);
- const sides=c.createLinearGradient(0,0,w,0);sides.addColorStop(0,'#090b10');sides.addColorStop(.12,'#090b1000');sides.addColorStop(.88,'#090b1000');sides.addColorStop(1,'#090b10');c.fillStyle=sides;c.fillRect(0,0,w,h);c.restore();
+ const rim=c.createLinearGradient(0,0,0,h);rim.addColorStop(0,'#111112');rim.addColorStop(.17,'#11111200');rim.addColorStop(.8,'#11111200');rim.addColorStop(1,'#111112');c.fillStyle=rim;c.fillRect(0,0,w,h);
+ const sides=c.createLinearGradient(0,0,w,0);sides.addColorStop(0,'#111112');sides.addColorStop(.12,'#11111200');sides.addColorStop(.88,'#11111200');sides.addColorStop(1,'#111112');c.fillStyle=sides;c.fillRect(0,0,w,h);c.restore();
 }
 function drawEdges(c,edges,project,visible,w,h,alpha,color,maxLength=Infinity,budget=Infinity){
  c.save();c.strokeStyle=color;c.lineWidth=.9;c.globalAlpha=alpha;c.setLineDash([]);let count=0;

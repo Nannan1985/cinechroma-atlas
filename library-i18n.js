@@ -1,6 +1,6 @@
 /* Locale is presentation only: never changes IDs, graph input or sample data. */
 (function(root){'use strict';
-const dictionary={"影片列表":"Film list","陈楠":"Nan Chen","创作者":"Created by","设计与开发":"Design & development","个人网站":"Personal website","即将上线":"Coming soon","影片资料与色彩":"Film details & colors","本地关联":"Local association","本地实测":"Measured runtime","组本地关联":" local associations","蓝色辉光和连线 · 按已核实的导演身份关联":"Blue connections · Shared verified director identities","资料采用已匹配的 TMDB 缓存；缺译名保留原文。年份按首映日期、地区按制片地区，未标注的时长为参考值；“本地实测”来自影片文件，色环使用本地实测时间轴。原影片、NFO 和海报保持只读。":"Metadata uses matched TMDB records cached locally; missing translations retain the original name. Years follow release dates, regions mean production countries, and unmarked runtimes are references. “Measured runtime” comes from the local movie file. The ring uses the measured local timeline. Movie files, NFOs and posters remain read-only.","资料说明":"About the metadata","部分译名待补全":"Some names untranslated",
+const dictionary={"影片列表":"Film list","创作者":"Created by","设计与开发":"Design & development","个人网站":"Personal website","即将上线":"Coming soon","影片资料与色彩":"Film details & colors","本地关联":"Local association","本地实测":"Measured runtime","组本地关联":" local associations","蓝色辉光和连线 · 按已核实的导演身份关联":"Blue connections · Shared verified director identities","资料采用已匹配的 TMDB 缓存；缺译名保留原文。年份按首映日期、地区按制片地区，未标注的时长为参考值；“本地实测”来自影片文件，色环使用本地实测时间轴。原影片、NFO 和海报保持只读。":"Metadata uses matched TMDB records cached locally; missing translations retain the original name. Years follow release dates, regions mean production countries, and unmarked runtimes are references. “Measured runtime” comes from the local movie file. The ring uses the measured local timeline. Movie files, NFOs and posters remain read-only.","资料说明":"About the metadata","部分译名待补全":"Some names untranslated",
   "电影星图 · 本地片库": "Film Constellations · Local Library",
   "观看导览": "Take a tour",
   "处理进度": "Processing",
@@ -12,7 +12,7 @@ const dictionary={"影片列表":"Film list","陈楠":"Nan Chen","创作者":"Cr
   "正在读取本地片库…": "Loading your library…",
   "布局与筛选": "Layout and filters",
   "搜索": "Search",
-  "片名 / 系列 / 导演…": "Title / collection / director…",
+  "片名 / 系列 / 导演…": "Title / series / director…",
   "处理状态": "Processing status",
   "全部影片": "All films",
   "已提取色彩": "Colors ready",
@@ -43,9 +43,9 @@ const dictionary={"影片列表":"Film list","陈楠":"Nan Chen","创作者":"Cr
   "取消选择": "Clear selection",
   "打开真实色环与截图 ↗": "Open color ring and frames ↗",
   "关联作品": "Related films",
-  "同系列": "Collection",
+  "同系列": "Series",
   "同导演": "Director",
-  "同系列作品": "In this collection",
+  "同系列作品": "Series films in this collection",
   "影片色彩时间曲线": "Color over time",
   "色彩 · 时间剖面": "COLOR THROUGH TIME",
   "选择影片查看时间曲线": "Select a film to view its curves",
@@ -86,7 +86,7 @@ const dictionary={"影片列表":"Film list","陈楠":"Nan Chen","创作者":"Cr
   " 部": " films",
   "没有明确的系列资料": "No collection identified",
   "同导演作品 · ": "Films by this director · ",
-  "没有明确的导演资料": "No director identified",
+  "没有明确的导演资料": "Director information unavailable",
   "金色辉光和连线 · 点击作品直接平移切换": "Gold connections · Choose a film to pan directly",
   "蓝色辉光和连线 · 至少一位导演相同，按本地资料匹配": "Blue connections · At least one shared director identity",
   "片库暂无可演示影片，你可以先了解操作方式。": "There are no films to demonstrate yet. You can still explore the controls.",
@@ -122,13 +122,13 @@ const dictionary={"影片列表":"Film list","陈楠":"Nan Chen","创作者":"Cr
   "每颗星都是一部电影。位置来自类型、地区、导演和年份的综合相似度；距离近，代表资料更相似。": "Each star is a film. Positions reflect shared genres, countries, directors and release years; closer films have more similar metadata.",
   "大小，代表关联程度": "Size reflects connections",
   "星点越大，表示与片库中其他作品的综合关联越强，不代表评分更高。同系列数量不会直接放大星点，筛选后大小也保持不变。": "Larger stars have stronger overall connections to other works in the library, not higher ratings. Series size does not directly enlarge a star, and filtering keeps its size unchanged.",
-  "连线，把同系列串起来": "Collections connect the stars",
+  "连线，把同系列串起来": "Series connect the stars",
   "全景只保留短距离连线。停留在一颗星上，会显示它所在系列的完整连接；移开后恢复简洁。现在亮起的是示例影片所属的系列。": "The overview shows short connections. Hover over a star to reveal its full collection; move away to restore the quiet view. This is our demo collection.",
   "走进一部电影的颜色": "Step inside a film’s colors",
   "点击星点，镜头聚焦，颜色舒展成圆环。时间沿圆环顺时针前进。悬浮移动选择光标，单击才更新中心截图，并固定跨时段的色彩回声。": "Select a star to focus the camera and unfold its color ring. Time runs clockwise. Hover to move the cursor; click to update the central frame and pin its color echoes.",
   "海报旁，是电影的身份": "The identity behind the poster",
   "片名、年份、类型、地区、导演和时长集中在这里。资料来自本地片库；尚未采样的影片也能查看资料，色环暂以空环占位。": "Find the title, year, genres, regions, director and runtime here. Films awaiting extraction still have metadata and an empty placeholder ring.",
-  "沿着系列继续看": "Follow a collection",
+  "沿着系列继续看": "Follow a series",
   "“同系列”列出这个系列的作品，并在星图上保留关联连接。选择另一部，会直接平移到它的位置，无需退回全景。长列表可以单独滚动。": "The Collection tab lists related films and highlights their connections. Select another to pan directly to it. Longer lists scroll independently.",
   "换一条线索：同导演": "Follow a director",
   "这里已切换为“同导演”。列表显示至少有一位导演相同的作品，星图同步显示关联。可随时切回“同系列”。": "The Director tab shows films sharing at least one director identity, with matching connections in the atlas. Switch back to Collection at any time.",
@@ -179,6 +179,51 @@ Object.assign(dictionary,{
  '定位与画面':'Locate a moment',
  "蓝线显示亮度变化，紫线显示相邻采样色差，并与色带、色环同步定位。悬浮或方向键移动光标；单击或回车固定时刻，更新截图与色彩回声。":"Blue traces brightness; violet shows color differences between adjacent samples. Both curves share a time cursor with the color strip and ring. Hover or use arrow keys to locate; click or press Enter to pin the moment and update the frame and color echoes."
 });
+Object.assign(dictionary,{
+  "每颗星都是一部电影。位置综合类型、地区、导演和年份，近邻提示资料关联；距离不是精确度量，也不代表评分。": "Each star is a film. Positions combine genres, countries, directors and years. Nearby stars suggest related metadata; distance is not an exact measure or rating.",
+  "作者": "Creator",
+  "选择附近影片": "Choose a nearby film",
+  "多部影片相邻，请选择或放大": "Several films are close together. Choose one or zoom in.",
+  "关闭": "Close",
+  "完整导览": "Full guide",
+  "个人电影收藏": "A PERSONAL FILM COLLECTION",
+  "从个人收藏出发，看见电影之间的色彩与联系。": "Explore color and connection through a personal film collection.",
+  "选择一颗星，走进一部电影。": "Choose a star. Step into a film.",
+  "正在读取片集…": "Loading the collection…",
+  "清空搜索": "Clear search",
+  "清空": "Clear",
+  "搜索结果": "Search results",
+  "色彩分析": "Color analysis",
+  "关于这份片集": "About this collection",
+  "影色星图从我的个人电影收藏出发，将画面、色彩与影片信息转化为可以探索的视觉空间。这里的收录带有个人选择的痕迹：年代分布并不均衡，也不追求导演作品或系列电影的完整覆盖。页面中的数量、分布和关联，均以当前片集为范围。作品关注的是一种观察和浏览电影的方式，之后会随着兴趣与已有素材少量补充。": "Cinechroma Atlas explores frames, colors, and connections within my personal film collection. The selection reflects personal choices: it is uneven across years and does not aim to include every film by a director or in a series. All counts, distributions, and connections refer only to the films currently included. This project experiments with a way of looking at and browsing films, with occasional additions as interests and available materials evolve.",
+  "画面与色带来自影片采样。位置综合类型（50%）、制片地区（20%）、导演（20%）与年份（10%）；可见连线表示本片集内的同系列或同导演关联，不代表历史影响或纯色彩相似度。": "Frames and color strips come from sampled films. Positions combine genres (50%), production countries (20%), directors (20%) and years (10%). Visible lines link series or shared directors within this collection, not historical influence or color similarity alone.",
+  "星点大小表示本片集内的综合关联程度，不代表评分、喜爱程度或推荐次序。": "Star size reflects combined connections within this collection, not ratings, favorites or a recommendation order.",
+  "统计、筛选与关联仅涵盖本片集收录的影片。": "Counts, filters and connections cover only the films in this collection.",
+  "本片集暂仅收录该系列这一部": "This is the only film from this series currently in the collection",
+  "系列信息暂缺": "Series information unavailable",
+  "本片集中同导演作品": "By this director in this collection",
+  "本片集暂无其他已识别的同导演作品": "No other films by this director are identified in this collection",
+  "本片集收录 ": "This collection includes ",
+  "没有明确的系列资料": "Series information unavailable",
+  "同导演作品 · ": "By this director in this collection · ",
+  "本作品使用 TMDB API，但未经 TMDB 认可或认证。": "This product uses the TMDB API but is not endorsed or certified by TMDB.",
+  "移动与缩放": "Move and zoom",
+  "选择一部电影": "Choose a film",
+  "探索时间与色彩": "Explore time and color",
+  "每颗星是一部电影，位置来自类型、地区、导演和年份的综合相似度。拖动平移，双指或滚轮缩放；“全景”恢复视角。": "Each star is a film, placed by shared genres, countries, directors and years. Drag to pan; pinch or scroll to zoom. Overview resets the view.",
+  "点选星点，或搜索片名后点选结果，进入影片色环。返回星图可继续探索；较大的星点表示本片集内关联较强。": "Choose a star or a search result to open its color ring. Return to keep exploring. Larger stars have stronger connections within this collection.",
+  "点选圆环或色带定位时间，查看真实采样画面。资料面板可滚动，色彩分析可展开；需要更多说明时打开“完整导览”。": "Choose a moment on the ring or color strip to see a sampled frame. Scroll the details and expand color analysis. The Full guide has more help.",
+  "较大的星点，表示与本片集的综合关联较强，不代表评分或偏好。系列数量不会直接放大星点，筛选也不改变大小。": "Larger stars have stronger connections within this collection, not higher ratings or personal preference. Series counts do not directly enlarge stars, and filtering keeps their size.",
+  "全景保留短距离系列连线。悬停或选片后，显示本片集中该系列的完整连接；移开后恢复简洁。": "The overview shows short series links. Hover or select a film to reveal its full series connections within this collection; moving away restores the quiet view.",
+  "点击星点进入影片。时间沿圆环顺时针前进；点选一个时刻，中心画面与色彩回声随之更新。": "Choose a star to enter a film. Time runs clockwise around the ring. Select a moment to update the central frame and its color echoes.",
+  "片名和年份在海报旁，导演、类型、制片地区与时长在下方。画面来自已有采样，资料保留已确认的译名。": "The title and year sit beside the poster; director, genres, production countries and runtime follow below. Frames use existing samples and metadata retains verified names.",
+  "“同系列”只列出本片集已收录的作品。点选另一部，镜头直接平移过去；列表可单独滚动。": "Series lists only films included in this collection. Choose another to pan directly to it; the list scrolls independently.",
+  "这里列出本片集中至少有一位导演相同的作品，并同步显示连线。这不是导演完整作品集。": "These films share at least one director and are included in this collection. Their links appear in the atlas. This is not a complete filmography.",
+  "色带、色环与两条曲线共用时间定位。悬浮或方向键移动光标；点选或回车更新画面。分析图表可随时展开。": "The color strip, ring and both curves share a time cursor. Hover or use arrow keys to locate a moment; click or press Enter to update the frame. Analysis can be expanded anytime.",
+  "类型、地区或年代改变星点着色；下拉框按对应属性筛选，电影的位置保持不变。": "Genres, regions and decades change star colors. The dropdown filters by that attribute while film positions stay fixed.",
+  "分类数字只统计本片集。点选标签筛选，再点取消；搜索片名、系列或导演后，直接点选结果。": "Category counts refer only to this collection. Select a label to filter and select again to clear. Search by title, series or director, then choose a result.",
+  "选一颗星，或搜索一部熟悉的电影。“全景”恢复初始视角，顶部“完整导览”随时可重看。": "Choose a star or search for a familiar film. Overview resets the view, and the Full guide is always available at the top."
+});
 dictionary['本作品使用 TMDB API，但未经 TMDB 认可或认证。']='This product uses the TMDB API but is not endorsed or certified by TMDB.';
 let locale='zh';try{locale=localStorage.getItem('film-atlas-language')==='en'?'en':'zh';}catch(_){}
 const t=s=>locale==='en'?(dictionary[s]||s):s;
@@ -193,6 +238,7 @@ function searchText(f){const m=f.metadata_v2;return [...Object.values(f.local_as
 const originals=new WeakMap();
 function apply(node){if(!node||typeof document==='undefined')return;const walk=document.createTreeWalker(node,4);let n;while(n=walk.nextNode()){if(['SCRIPT','STYLE'].includes(n.parentElement?.tagName))continue;const raw=originals.get(n)||n.textContent;if(dictionary[raw.trim()]){originals.set(n,raw);n.textContent=raw.replace(raw.trim(),t(raw.trim()));}}
 for(const el of node.querySelectorAll('[aria-label],[placeholder],[title]'))for(const attr of ['aria-label','placeholder','title']){const key='i18n-'+attr;let raw=el.getAttribute('data-'+key)||el.getAttribute(attr);if(dictionary[raw]){el.setAttribute('data-'+key,raw);el.setAttribute(attr,t(raw));}}
+root.LibraryIdentity?.apply(node);
 }
 const embeddedOriginals=new WeakMap(),embeddedWatches=new WeakMap();
 function embeddedText(text,f){const original=f.metadata_provenance?.local_title||f.title;if(original)text=text.split(original).join(title(f));if(locale!=='en')return text.replaceAll('Enter 或空格固定参照，方向键选帧，Home/End 到首尾，Escape 返回。','回车键或空格键固定参照，方向键选帧，起始键和结束键跳至首尾，退出键返回。');return text.replaceAll('已选画面','Selected frame').replaceAll('正在加载','Loading').replaceAll('画面暂不可用','Frame unavailable').replaceAll('该采样画面暂时无法加载','This frame could not be loaded').replaceAll('的真实采样画面','sampled frame').replaceAll('，点击固定为参照',', click to pin reference').replaceAll('按真实时间分布的跨时段颜色候选','Color echoes across the timeline').replaceAll('Enter 或空格固定参照，方向键选帧，Home/End 到首尾，Escape 返回。','Enter or Space pins the reference; arrows select frames; Home/End move to either end; Escape returns.').replaceAll('固定参照','Pinned frame').replaceAll('悬浮预览','Preview').replaceAll('参照已固定为','Reference pinned at').replaceAll('个跨时段颜色候选','color echoes across the timeline').replaceAll('样本','sample').replaceAll('平均色','mean color').replaceAll('，',', ').replaceAll('。','. ');}
