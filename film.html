@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><link rel="icon" href="/cinechroma-atlas/fonts/cinechroma-brand.svg?v=ui20261023-01">
+<head><link rel="icon" href="/cinechroma-atlas/fonts/cinechroma-brand.svg?v=ui20261023-02">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>影色星图 / Cinechroma Atlas</title>
@@ -32,9 +32,9 @@ body[data-structure=forming] .inspector,body[data-structure=forming] .charts,bod
 /* Compact right-hand temporal profile; the star map has no below-ring appendix. */
 [hidden]{display:none!important}.inspector .charts{margin-top:24px;grid-template-columns:1fr;row-gap:18px;padding:21px 0 12px}.inspector .charts-intro{display:block}.inspector .chartkey{margin-top:12px;gap:12px;flex-wrap:wrap}.inspector .charts-help{line-height:1.8}.preview-tools{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}.preview-tools button{padding:7px 10px;font-size:10px}.source-note{margin-top:15px;font-size:9px}.source-note p{line-height:1.8}.source-note summary{color:#748196}@media(max-width:900px){.inspector .charts,.inspector .source-note{grid-column:1/-1}.preview-tools{grid-column:2}.inspector .charts{grid-template-columns:1fr 1fr}}@media(max-width:600px){.inspector .charts{grid-template-columns:1fr}.preview-tools{grid-column:1/-1}}
 </style>
-<style>.film-poster{margin:18px 0 14px;max-width:200px}.film-poster img{display:block;width:100%;height:auto;max-height:300px;object-fit:contain}.film-info{white-space:pre-line;font-size:13px;line-height:1.9}.metadata-source{font-size:10px;color:#718098;margin:8px 0 20px}@media(max-width:900px){.inspector{display:block}.film-poster{max-width:180px}}</style><script src="/cinechroma-atlas/deployment-config.js?v=ui20261023-01"></script><script src="/cinechroma-atlas/deployment-runtime.js?v=ui20261023-01"></script></head>
+<style>.film-poster{margin:18px 0 14px;max-width:200px}.film-poster img{display:block;width:100%;height:auto;max-height:300px;object-fit:contain}.film-info{white-space:pre-line;font-size:13px;line-height:1.9}.metadata-source{font-size:10px;color:#718098;margin:8px 0 20px}@media(max-width:900px){.inspector{display:block}.film-poster{max-width:180px}}</style><script src="/cinechroma-atlas/deployment-config.js?v=ui20261023-02"></script><script src="/cinechroma-atlas/deployment-runtime.js?v=ui20261023-02"></script><style>.standalone-film-nav{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:16px 4vw;color:#aaa;font:12px/1.6 sans-serif}.standalone-film-nav select{font:inherit;color:#ddd;background:#171615;border:1px solid #ffffff30;border-radius:5px;padding:7px 10px;min-height:40px}.standalone-film-nav [data-creator-name]{margin-left:auto}.standalone-film-nav #localStatus{width:100%;margin:0}.standalone-film-nav a{padding:8px 0}</style></head>
 <body data-scene="node" data-sort="chronological">
-<nav><a href="/cinechroma-atlas/">影色星图 / Cinechroma Atlas</a><p id="localStatus" role="status">正在读取影片 / Loading film…</p></nav><main hidden>
+<nav class="standalone-film-nav"><a href="/cinechroma-atlas/">返回星图</a><label><span class="sr">语言</span><select id="filmLanguage" aria-label="语言"><option value="zh">中文</option><option value="en">英文</option></select></label><span data-creator-name>Stillrove</span><p id="localStatus" role="status">正在读取影片 / Loading film…</p></nav><main hidden>
 <header><div><div class="eyebrow">CINECHROMA ATLAS</div><h1><span id="titleText">影片</span> <small>色彩星图</small></h1></div><div id="filmMeta" class="meta" inert aria-hidden="true"></div></header>
 <div id="announce" class="sr" role="status" aria-live="polite"></div>
 <noscript>请启用 JavaScript。数据与画面随页面提供。</noscript>
@@ -45,7 +45,7 @@ body[data-structure=forming] .inspector,body[data-structure=forming] .charts,bod
 <div class="chart-panel"><div class="charthead"><h3 id="brightnessTitle">亮度代理</h3><strong id="brightValue"></strong></div><div class="chartsub"><span>加权编码 RGB</span><span id="brightnessScale">0—1</span></div><canvas id="brightness" class="chart" tabindex="0" role="slider" aria-orientation="horizontal" aria-label="亮度代理时间曲线" aria-describedby="chartHelp"></canvas><div class="axis"><span>00:00</span><span class="endtime">12:26</span></div></div>
 <div class="chart-panel"><div class="charthead"><h3 id="differenceTitle">相邻采样色差</h3><strong id="changeValue"></strong></div><div class="chartsub"><span>平均 RGB 欧氏距离</span><span id="differenceScale"></span></div><canvas id="difference" class="chart" tabindex="0" role="slider" aria-orientation="horizontal" aria-label="相邻采样平均色差时间曲线" aria-describedby="chartHelp"></canvas><div class="axis"><span>00:00</span><span class="endtime">12:26</span></div></div>
 <p id="chartHelp" class="charts-help">悬浮或 ← → 按时间预览 · Enter 固定参照 · 首个采样没有前序色差</p>
-</section><details id="notes" class="source-note" inert aria-hidden="true"><summary>素材来源与许可</summary><div id="filmNotes"></div></details></aside>
+</section><details id="notes" class="source-note" inert aria-hidden="true"><summary>采样与色彩说明</summary><div id="filmNotes"></div></details></aside>
 </section>
 
 <div hidden id="explore"><span id="chronological"></span><img crossorigin="anonymous" id="referenceImage" alt=""><span id="referenceText"></span><span id="sortStatus"></span><div id="matches"></div></div><div hidden id="credits"></div>
@@ -55,4 +55,4 @@ body[data-structure=forming] .inspector,body[data-structure=forming] .charts,bod
 
 
 </script>
-<script src="/cinechroma-atlas/local-film-loader.js?v=ui20261023-01"></script></body></html>
+<script src="/cinechroma-atlas/library-identity.js?v=ui20261023-02"></script><script src="/cinechroma-atlas/library-i18n.js?v=ui20261023-02"></script><script src="/cinechroma-atlas/library-film-i18n.js?v=ui20261023-02"></script><script src="/cinechroma-atlas/local-film-loader.js?v=ui20261023-02"></script></body></html>

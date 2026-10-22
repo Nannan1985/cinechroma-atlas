@@ -43,6 +43,8 @@ const dictionary={"影片列表":"Film list","创作者":"Created by","设计与
   "取消选择": "Clear selection",
   "打开真实色环与截图 ↗": "Open color ring and frames ↗",
   "关联作品": "Related films",
+  "查看本片集同导演作品": "Explore films with shared directors",
+  "当前影片": "Current film",
   "同系列": "Series",
   "同导演": "Director",
   "同系列作品": "Series films in this collection",
@@ -199,13 +201,14 @@ Object.assign(dictionary,{
   "画面与色带来自影片采样。位置综合类型（50%）、制片地区（20%）、导演（20%）与年份（10%）；可见连线表示本片集内的同系列或同导演关联，不代表历史影响或纯色彩相似度。": "Frames and color strips come from sampled films. Positions combine genres (50%), production countries (20%), directors (20%) and years (10%). Visible lines link series or shared directors within this collection, not historical influence or color similarity alone.",
   "星点大小表示本片集内的综合关联程度，不代表评分、喜爱程度或推荐次序。": "Star size reflects combined connections within this collection, not ratings, favorites or a recommendation order.",
   "统计、筛选与关联仅涵盖本片集收录的影片。": "Counts, filters and connections cover only the films in this collection.",
+  "系列关联包含已确认的本地分组；同导演按已核实的人物身份匹配。": "Series links include confirmed local groupings; director links match verified person identities.",
   "本片集暂仅收录该系列这一部": "This is the only film from this series currently in the collection",
   "系列信息暂缺": "Series information unavailable",
-  "本片集中同导演作品": "By this director in this collection",
-  "本片集暂无其他已识别的同导演作品": "No other films by this director are identified in this collection",
+  "本片集中同导演作品": "Shared directors · This collection",
+  "本片集暂无其他已识别的同导演作品": "No other films with shared directors are identified in this collection",
   "本片集收录 ": "This collection includes ",
   "没有明确的系列资料": "Series information unavailable",
-  "同导演作品 · ": "By this director in this collection · ",
+  "同导演作品 · ": "Shared directors · This collection · ",
   "本作品使用 TMDB API，但未经 TMDB 认可或认证。": "This product uses the TMDB API but is not endorsed or certified by TMDB.",
   "移动与缩放": "Move and zoom",
   "选择一部电影": "Choose a film",
@@ -224,6 +227,17 @@ Object.assign(dictionary,{
   "分类数字只统计本片集。点选标签筛选，再点取消；搜索片名、系列或导演后，直接点选结果。": "Category counts refer only to this collection. Select a label to filter and select again to clear. Search by title, series or director, then choose a result.",
   "选一颗星，或搜索一部熟悉的电影。“全景”恢复初始视角，顶部“完整导览”随时可重看。": "Choose a star or search for a familiar film. Overview resets the view, and the Full guide is always available at the top."
 });
+Object.assign(dictionary,{
+  "位置综合类型（50%）、制片地区（20%）、导演（20%）与年份（10%）；近邻提示资料关联，距离不是精确度量。连线展示本片集的系列（含已确认的本地分组）或同导演关联，不代表历史影响。": "Positions combine genres (50%), production countries (20%), directors (20%) and years (10%). Nearby stars suggest related metadata, not an exact distance measure. Lines show series, confirmed local groups or shared directors within this collection, not historical influence.",
+  "色带取自缩放后整幅画面的编码 RGB 平均色，黑边与烧录字幕参与计算；不是主色提取或线性光平均。": "Color strips use arithmetic means of gamma-encoded RGB across resized full frames, including black bars and burned-in subtitles. They are not dominant colors or linear-light averages.",
+  "收录不等于已看、最爱或推荐。": "Inclusion does not mean watched, favorite or recommended.",
+  "统计、筛选与关联仅涵盖本片集；一部影片可属于多个类型或地区，分类数量不能直接相加。": "Counts, filters and connections cover only this collection. A film can have several genres or production countries, so category counts are not additive.",
+  "选择影片，查看本片集中的系列与导演关联。": "Choose a film to explore its series and director connections within this collection.",
+  "本片集分类与数量": "Collection categories and counts",
+  "片集数量暂不可用": "Collection count unavailable",
+  "资料以已匹配的 TMDB 记录为主，保留已确认的本地译名与关联。年份按首映日期，地区指制片地区；参考时长可能与影片版本不同，色环按实际采样时间显示。缺少可靠译名时保留原文。": "Metadata mainly follows matched TMDB records, with confirmed local names and connections retained. Years use release dates and regions mean production countries. Reference runtimes may differ by edition; the ring follows the sampled timeline. Names without reliable translations remain in their original form.",
+  "资料来自收藏中的 NFO 文件，部分信息尚待核实；缺少可靠译名时保留原文。": "Metadata comes from NFO files in the collection; some details remain unverified. Names without reliable translations remain in their original form."
+});
 dictionary['本作品使用 TMDB API，但未经 TMDB 认可或认证。']='This product uses the TMDB API but is not endorsed or certified by TMDB.';
 let locale='zh';try{locale=localStorage.getItem('film-atlas-language')==='en'?'en':'zh';}catch(_){}
 const t=s=>locale==='en'?(dictionary[s]||s):s;
@@ -236,17 +250,20 @@ function terms(f,field){return f.metadata_v2?.[field]?.map(label)??f[field]??[];
 function facetLabel(f,field,id){if(field==='year')return locale==='en'?id.replace('年代','s').replace('年份未知','Unknown year'):id;return label(f.metadata_v2?.[field]?.find(e=>e.id===id))||t(id);}
 function searchText(f){const m=f.metadata_v2;return [...Object.values(f.local_association?.labels||{}),f.title,f.metadata_provenance?.local_title,f.original_title,f.series,f.year,...['genres','countries','directors'].flatMap(k=>[...(f[k]||[]),...(m?.[k]||[]).flatMap(e=>[...Object.values(e.labels||{}),...(e.aliases||[]),e.original])]),...Object.values(m?.title||{}),...Object.values(m?.series||{})].filter(Boolean).join(' ').normalize('NFKC').toLowerCase();}
 const originals=new WeakMap();
-function apply(node){if(!node||typeof document==='undefined')return;const walk=document.createTreeWalker(node,4);let n;while(n=walk.nextNode()){if(['SCRIPT','STYLE'].includes(n.parentElement?.tagName))continue;const raw=originals.get(n)||n.textContent;if(dictionary[raw.trim()]){originals.set(n,raw);n.textContent=raw.replace(raw.trim(),t(raw.trim()));}}
+function apply(node){if(!node||typeof document==='undefined')return;const walk=document.createTreeWalker(node,4);let n;while(n=walk.nextNode()){if(['SCRIPT','STYLE'].includes(n.parentElement?.tagName))continue;const prior=originals.get(n),raw=prior&&n.textContent===prior.rendered?prior.raw:n.textContent;if(dictionary[raw.trim()]){const rendered=raw.replace(raw.trim(),t(raw.trim()));originals.set(n,{raw,rendered});if(n.textContent!==rendered)n.textContent=rendered;}}
 for(const el of node.querySelectorAll('[aria-label],[placeholder],[title]'))for(const attr of ['aria-label','placeholder','title']){const key='i18n-'+attr;let raw=el.getAttribute('data-'+key)||el.getAttribute(attr);if(dictionary[raw]){el.setAttribute('data-'+key,raw);el.setAttribute(attr,t(raw));}}
 root.LibraryIdentity?.apply(node);
 }
+// Apply saved preferences before the catalogue request: loading and failure UI
+// must use the same language as the working atlas. Share metadata stays static.
+function syncDocument(){if(typeof document==='undefined')return;document.documentElement.lang=locale==='en'?'en':'zh-CN';document.title=locale==='en'?'Cinechroma Atlas — Frames, colors and connections':'影色星图 — 个人电影收藏的色彩与联系';const select=document.getElementById('language');if(select)select.value=locale;apply(document.body);}
 const embeddedOriginals=new WeakMap(),embeddedWatches=new WeakMap();
-function embeddedText(text,f){const original=f.metadata_provenance?.local_title||f.title;if(original)text=text.split(original).join(title(f));if(locale!=='en')return text.replaceAll('Enter 或空格固定参照，方向键选帧，Home/End 到首尾，Escape 返回。','回车键或空格键固定参照，方向键选帧，起始键和结束键跳至首尾，退出键返回。');return text.replaceAll('已选画面','Selected frame').replaceAll('正在加载','Loading').replaceAll('画面暂不可用','Frame unavailable').replaceAll('该采样画面暂时无法加载','This frame could not be loaded').replaceAll('的真实采样画面','sampled frame').replaceAll('，点击固定为参照',', click to pin reference').replaceAll('按真实时间分布的跨时段颜色候选','Color echoes across the timeline').replaceAll('Enter 或空格固定参照，方向键选帧，Home/End 到首尾，Escape 返回。','Enter or Space pins the reference; arrows select frames; Home/End move to either end; Escape returns.').replaceAll('固定参照','Pinned frame').replaceAll('悬浮预览','Preview').replaceAll('参照已固定为','Reference pinned at').replaceAll('个跨时段颜色候选','color echoes across the timeline').replaceAll('样本','sample').replaceAll('平均色','mean color').replaceAll('，',', ').replaceAll('。','. ');}
+function embeddedText(text,f){const displayTitle=title(f),names=[...new Set([displayTitle,f.metadata_provenance?.local_title,f.title].filter(Boolean))].sort((a,b)=>b.length-a.length);if(names.length)text=text.replace(new RegExp(names.map(name=>name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'g'),()=>displayTitle);if(locale!=='en')return text.replaceAll('Enter 或空格固定参照，方向键选帧，Home/End 到首尾，Escape 返回。','回车键或空格键固定参照，方向键选帧，起始键和结束键跳至首尾，退出键返回。').replaceAll('方向键切换影片，Enter 或空格展开。','方向键切换影片，回车键或空格键展开。').replaceAll('方向键切换影片，Enter 展开，Escape 返回。','方向键切换影片，回车键展开，退出键返回。');return text.replaceAll('已选画面','Selected frame').replaceAll('正在加载','Loading').replaceAll('画面暂不可用','Frame unavailable').replaceAll('该采样画面暂时无法加载','This frame could not be loaded').replaceAll('当前真实采样画面','Current sampled frame').replaceAll('的真实采样画面','sampled frame').replaceAll('，点击固定为参照',', click to pin reference').replaceAll('按真实时间分布的跨时段颜色候选','Color echoes across the timeline').replaceAll('Enter 或空格固定参照，方向键选帧，Home/End 到首尾，Escape 返回。','Enter or Space pins the reference; arrows select frames; Home/End move to either end; Escape returns.').replaceAll('方向键切换影片，Enter 或空格展开。','Arrow keys choose films; Enter or Space opens the film.').replaceAll('方向键切换影片，Enter 展开，Escape 返回。','Arrow keys choose films; Enter opens the film; Escape returns.').replaceAll('开放电影图库','Film gallery').replaceAll('影片图库','Film gallery').replaceAll('图库选中','Selected film:').replaceAll('固定参照','Pinned frame').replaceAll('悬浮预览','Preview').replaceAll('参照已固定为','Reference pinned at').replaceAll('个跨时段颜色候选','color echoes across the timeline').replaceAll('样本','sample').replaceAll('平均色','mean color').replaceAll('，',', ').replaceAll('。','. ');}
 function embedded(doc,f){if(!doc||!f)return;
 // Translate gallery updates before the next paint, including keyboard announcements.
 // Observe text/accessibility attributes only; canvas rendering and styles are untouched.
 if(doc.body&&doc.defaultView?.MutationObserver){let watch=embeddedWatches.get(doc);if(!watch){watch={film:f};watch.observer=new doc.defaultView.MutationObserver(()=>embedded(doc,watch.film));embeddedWatches.set(doc,watch);watch.observer.observe(doc.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['aria-label','aria-valuetext','alt']});}watch.film=f;}
 doc.documentElement.lang=locale==='en'?'en':'zh-CN';doc.title=title(f);const nodes=[...doc.querySelectorAll('#stage,#centralState,#centralFrame,#satellites,#satellites button,#announce')];for(const el of nodes){let cache=embeddedOriginals.get(el);if(!cache){cache={};embeddedOriginals.set(el,cache);}const attrs=el.id==='centralState'||el.id==='announce'?['textContent']:['aria-label','aria-valuetext','alt'];for(const attr of attrs){const text=attr==='textContent'?el.textContent:el.getAttribute(attr);if(text===null)continue;let entry=cache[attr];if(!entry||text!==entry.rendered)entry={raw:text};const next=embeddedText(entry.raw,f);entry.rendered=next;cache[attr]=entry;if(next!==text){if(attr==='textContent')el.textContent=next;else el.setAttribute(attr,next);}}}}
 function setLocale(value){locale=value==='en'?'en':'zh';try{localStorage.setItem('film-atlas-language',locale);}catch(_){}return locale;}
-const api={association,runtime,embedded,embeddedText,t,label,title,series,terms,facetLabel,searchText,apply,setLocale,get locale(){return locale;}};if(typeof module!=='undefined')module.exports=api;else root.LibraryI18n=api;
+const api={association,runtime,embedded,embeddedText,t,label,title,series,terms,facetLabel,searchText,apply,syncDocument,setLocale,get locale(){return locale;}};if(typeof module!=='undefined')module.exports=api;else{root.LibraryI18n=api;syncDocument();}
 })(globalThis);
