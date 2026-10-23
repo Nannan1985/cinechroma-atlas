@@ -152,3 +152,11 @@ body.immersive main{grid-template-rows:auto minmax(0,1fr) auto!important}
  #details #filmTitle,html[lang=en] #details #filmTitle{font-size:22px}#representativeFrame img{height:110px}
 }
 @media(prefers-reduced-motion:reduce){.atlas-controls{transition:none}}
+/* Footer labels and the always-visible mobile film identity. */
+.creator-credit>summary{gap:3px}
+#aboutCollection{right:155px}
+.mobile-film-identity{display:block;text-align:left;min-width:0;flex:1}
+.mobile-film-name{display:block;font:500 17px/1.35 var(--font-title,Georgia,serif);color:#ded2bf;overflow-wrap:anywhere}
+.mobile-film-name:empty{display:none}
+.mobile-film-identity>span:last-child{display:block;font-size:10px;color:#a99f91;margin-top:3px}
+@media(max-width:740px){#aboutCollection{right:135px}.catalog:not([open]){max-width:calc(100% - 260px)}.mobile-sheet-toggle{min-height:68px}.mobile-film-name{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
