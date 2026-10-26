@@ -153,6 +153,8 @@ body.immersive main{grid-template-rows:auto minmax(0,1fr) auto!important}
 }
 @media(prefers-reduced-motion:reduce){.atlas-controls{transition:none}}
 /* Footer labels and the always-visible mobile film identity. */
+/* The search panel already reports its count; avoid a second count over its rows. */
+.map-panel:has(#searchResults:not([hidden])) #mapCount{visibility:hidden}
 .creator-credit>summary{gap:3px}
 #aboutCollection{right:155px}
 .mobile-film-identity{display:block;text-align:left;min-width:0;flex:1}
