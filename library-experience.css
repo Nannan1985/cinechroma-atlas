@@ -1,6 +1,12 @@
 /* P1: quiet cinema surfaces. Graph geometry and hit targets belong to P0. */
 html,body{background:#111112;color:#d7d5d1}
 header{border-color:#ffffff0a;background:#111112}
+/* A lightweight route back to the creator's site; follows the interface language. */
+.atlas-brand-group{display:flex;align-items:center;gap:24px;min-width:0}
+.personal-home-link{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:3px 4px;color:#b8b6b0;font-size:12px;line-height:1.4;white-space:nowrap;border-radius:3px}
+.personal-home-link:hover{color:#f0e8d9;text-decoration:underline;text-underline-offset:4px}
+.personal-home-link:focus-visible{outline:2px solid #d3ba8c;outline-offset:3px;color:#f0e8d9}
+@media(max-width:740px){.atlas-brand-group{flex-direction:column;align-items:flex-start;gap:2px}html[lang=en] header .atlas-brand-group .brand{max-width:100%}.personal-home-link{min-height:28px;padding:3px 0}}
 button,select,input{color:#d6d4d0;border-color:#ffffff1c}
 button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid #d3ba8c;outline-offset:3px}
 #mapWrap{background:#111112}.map-tools button,.atlas-controls button,.atlas-controls select,.atlas-controls input{background:#181819dc;border-color:#ffffff12}
